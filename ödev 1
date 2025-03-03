@@ -1,0 +1,95 @@
+Soru-1 cevap : Geleneksel Dosyalama Sisteminde veri doğrudan veya sıradan erişim yöntemiyle kullanılır. Sıralı Erişim Yönteminde bilgilerin tutulduğu dosya içeriği tarama yöntemiyle çalışır. İstenilen kayda gelince işlem yapar bu nedenle yavaştır. Dezavantajlarından biri de istenilen bilgiye anında ulaşılmamasıdır. Bu yüzden Doğrudan Erişimli yöntem geliştirilmiştir. Veri akışının fazla olduğu sistemlerde sıralı sistem yavaş kaldığından veritabanı yönetim sistemleri kullanılır.Birden çok dezavantajı olabilir.Bu dezavantajları şöyle sıralayabiliriz;
+--Veriye hızlı erişim olmaması
+--Düzenleme işlerinin daha zahmetli olması
+--Diğer dosyalarla bağlantının zor kurulması
+
+MÜŞTERİ TABLOSU
+
+Müsteri NO:		Ad		Soyad		Alışveriş tarihi
+492481			Metin		Mutlu		09.04.2024
+496532			Yasin Kağan	Özkan		12.08.2024
+508421			Selim		Sönmez		15.10.2024
+509474			Yasin Kağan	Özkan		15.10.2024
+
+--Müşteri NO: Birincil Anahtar --> Her müşteriye özel numara 
+--Ad ve soyadı: Müşterinin ad soyadı --> birden fazla olabilir
+--Alışveriş tarihi : Müşterinin alışveriş yaptığı tarih --> Bir çok kişinin aynı olabilir.
+
+
+
+Soru-2 cevap :
+
+	GELENEKSEL DOSYALAMA SİSTEMLERİ				VERİTABANI YÖNETİM SİSTEMLERİ
+	
+	--veri depolar						--veri depolar
+	--bellek israfı var					--bellek tasarrufu yapılmıştır
+	--standart bir dil söz konusu değil			--standart sorgu dili mümkün
+	--verileri düz dosya olarak saklar			--verileri tablo halinde saklar
+
+Soru-3 cevap :
+
+Veri tekrarı ve karmaşıklık azaltılmıştır. Geleneksel dosyalama sisteminde her uygulama kendi veri dosyasını oluşturur. bu yüzden verilerden birden çok sayıda olabilir bu da veri tekrarına ve tutarsızlığa sebep olur.VTYS de ise tüm veriler merkezi bir yapıda tutulur, bu sayede karmaşıklık gereksiz veri tekrarı ve tutarsızlık engellenmiş olur.
+
+Geleneksel dosyalama sistemlerinde veri paylaşımı daha zordur ve aynı anda farklı kullanıcıların veriye ulaşması zordur ancak VTSY de birden fazla kullanıcı birden fazla veriye eş zamanlı olarak erişebilir ve bu bilgileri paylaşabilir
+
+Geleneksel dosyalama işlemlerinde verilerin güvenlikleri manuel olarak sağlanır bu yüzden güvenlik açığı olabilr ve veriler tehilkeye girebilir.VTSY de ise bu güvenlik yerleşik mekanizmalar sayesinde sağlanır.
+
+Soru-4 cevap : 
+
+Çok fazla miktarda veriyi düzenli ve güvenli şekilde saklar. Bu verilere kolay erişim sağlar. Verilerin girişini,yönetimini ve güncelleştirmelerinde kolaylık sağlar.Hava sistemleri, sağlık sektörü gibi bir çok kurumda yer alır.
+
+Soru-5 cevap :
+
+Tablo, satır ve sütünlardan oluşur. Tabloya içindeki verilere göre isim alır. Satırlara genelde "kayıt", sütünlara ise "alan" denir. verileri daha düzenli ve sistematik halde tutar. Satır ve Sütun birbirine bağlıdır.
+
+Soru-6 cevap :
+
+Birincil anahtar: Bir tabloda tutulan verilerin hiçbirine benzemeyen hepsinden bağımsız olan bir anahtardır. Her tablonun yalnızca bir tane birincil anahtarı olabilir.
+
+Yabancı anahtar: Birincil anahtardaki gibi sütun olaran belirlenemez. Farklı bi tabloda bağlantı kurmak için kullanılabilir.
+
+Soru-7 cevap :
+
+---Veritabanı yöneticisi (DBA) : Tasarım, erişim yetki düzenlemesi, performans analizi, veri bütünlüğü koruma görevini, yedekleme ve geri yükleme görevlerini üstlenir ve yapar.
+---Uygulama geliştiricileri: Veritabanlarını kullanılabilecek yazılımları geliştirir,yazar.
+---Sorgu dili kullanıcıları: İhtiyac duyulanları hazırlar ve işletir.
+---Son kullanıcılar: Uygulama geliştiricilerinin geliştirdikleri yazılımları kullanır.
+
+Soru-8 cevap :
+
+---Veritabanı yöneticisi:
+**Tüm veritabanı üzerinde tam kontrol; tablo oluşturma, silme, güncelleme, kullanıcı ekleme ve yetki atama gibi işlemleri gerçekleştirebilir.
+---Uygulama geliştiricisi:
+**Veritabanında değişiklik yapma, yeni tablolar oluşturma, mevcut yapıları güncelleme yetkisine sahiptir.
+---Veri analisti: 
+**Tablolarsan veri okuma ve analiz yapma yetkisine sahiptir. Ancak veri üzerinde değişiklik yapamaz.
+---Veri giriş personeli: 
+**Belirli tablolara veri ekleme ve mevcut verileri güncelleme yetkisine sahiptir; ancak veri silemez beya tablo yapısını değiştiremez.
+---Raporlama uzmanı:
+**Veritabanından raporları oluşturmak için veri okuma yetkisine sahiptir; veri ekleme, güncelleme veya silme yetkisi yoktur.
+---Güvenlik yöneticisi:
+**Kullanıcı hesaplarını yönetme, şifreleme ve erişim izinlerini düzenleme yetkisine sahiptir; beri içeriğine erişim sınırlıdır.
+---Yedekleme operatörü:
+**Veritabanının yedeklenmesi ve geri yüklenmesi işlemlerini gerçekleştirme yetkisine sahiptir. Veritabanında okuma veya yazma işlemleri yapamaz.
+---Misafir kullanıcı:
+**Sadece belirli genel tablolarda sınırlı okuma yetkisine sahiptir; veri ekleme, güncelleme veya silme yetkisi yoktur.
+
+
+Soru-9 cevap :
+
+Veritabanı, verileri organize bir şekilde erişmek, yönetmek,depolamak için kullanılır. Genellikle birbiriyle ilişkili bilgileri barındırır. 
+VTYS ise veritabanlarını tanımlamak, kullanmak, değiştirmek ve çeşitli işlem yapmak için tasarlanmış yazılımdır. Verinin güvenliğini, bütünlüğünü sağlar. MySQL, Oracle yazılımları VTYS'dir.
+
+Soru-10 cevap :
+
+İlişkisel veri modeli, birbiriyle bir şekilde ilişkili olan çeşitli türdeki bilgileri depolamak için kullanılır.Kısaca verileri depolayan ve aralarında bir bağlantı noktası sağlayan bir veri tabanıdır.
+
+Soru-11 cevap :
+
+
+Öğrencilerin bilgilerini saklar. Sütunlar: Öğrenci No (birincil anahtar), Bölüm adı, Fakülte -Bölümler: Üniversitedeki bölümleri temsil eder. 
+Sütunlar: Bölüm Kodu(birincil anahtar), Bölüm adı, Fakülte -Dersler: Dersleri ifade eder. 
+Sütunlar: Ders Kodu(birincil anahtar), Ders adı, Kredii Bölüm Kodu(Yabancı anahtar) -Öğretmenler: Dersi veren öğretmenler. 
+Sütunlar: ÖğretmenID(birincil anahtar), İsim, Soyisim, Bölüm Kodu(Yabancı anahtar) -Notders: Öğrencilerin not ve aldıkları dersleri tutar. 
+Sütunlar: Öğrenci No, Ders No, Not Tablolar Arası İlişkiler -Öğrenciler birden fazla ders alabilir ve her ders birden çok öğrenci tarafından alınabilir. (çoka çok) -Bir bölümde birden fazla öğretmen vardır. 
+(bire çok) -Bir dersi bir öğretmen verebilir. (birebir) -Bir öğrencinin birden fazla notu olabilir (bire çok)
