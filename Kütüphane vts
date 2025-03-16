@@ -41,29 +41,32 @@ kutuphaneNo int foreign key (kutuphaneNo) REFERENCES kutuphane_t (kutuphaneNo),
 ISBN int foreign key (ISBN) REFERENCES kitaplar(ISBN)
 );
 
-create table Yazarlar(
-YazarNo int not null identity(1,1) primary key,
-YazarAdi nvarchar(100),
-YazarSoyadi nvarchar(100)
-);
-
-create table Katogoriler(
-KatogoriNo int not null identity(1,1) primary key,
-KatogoriAdi nvarchar(100)
-);
-
-create table KITAP_KATOGORI(
-ISBN int foreign key (ısbn) REFERENCES Kitaplar(ısbn),
-KatogoriNo int foreign key (KatogoriNo) REFERENCES Katogoriler(KatogoriNo)
-);
-
-create table KİTAP_YAZAR(
-ISBN int foreign key (ISBN) REFERENCES Kitaplar(ISBN),
-YazarNo int foreign key(YazarNo) references Yazarlar(YazarNo)
-);
-
-create table KITAP_KUTUPHANE(
-Miktar int not null,
-KutuphaneNo int foreign key (KutuphaneNo) REFERENCES Kutuphane(KutuphaneNo),
-ISBN int foreign key (ısbn) references Kitaplar(ısbn)
-);
+create table Kategoriler(
+ KategoriNo int not null identity(1,1) Primary Key,
+ KategoriAdi nvarchar(50) not null,
+ );
+ 
+ 
+ create table Yazarlar(
+ YazarNo int not null identity(1,1) Primary Key,
+ YazarAdi nvarchar(15) not null,
+ YazarSoyadi nvarchar(15) not null, 
+ );
+ 
+ 
+ create table KitapKutuphane(
+ ISBN int foreign key (ISBN) references kitaplar(ISBN),
+ kutuphaneNO int foreign key(kutuphaneNO) references kutuphane(kutuphaneNO),
+ );
+ 
+ 
+ create table KitapYazar(
+ YazarNo int foreign key (YazarNo) references Yazarlar (YazarNo),
+ ISBN int foreign key (ISBN) references kitaplar (ISBN),
+ );
+ 
+ 
+ create table KitapKategori(
+ KategoriNo int foreign key (KategoriNo) references Kategoriler(KategoriNo),
+ ISBN int foreign key (ISBN) references kitaplar(ISBN),
+ );
