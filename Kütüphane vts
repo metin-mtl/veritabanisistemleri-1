@@ -40,3 +40,35 @@ uyeNo int foreign key (uyeNo) REFERENCES uyeler (uyeNo),
 kutuphaneNo int foreign key (kutuphaneNo) REFERENCES kutuphane_t (kutuphaneNo),
 ISBN int foreign key (ISBN) REFERENCES kitaplar(ISBN)
 );
+
+use library;
+create table Yazarlar(
+YazarNo int not null identity(1,1) primary key,
+YazarAdi nvarchar(100),
+YazarSoyadi nvarchar(100)
+);
+
+use library;
+create table Katogoriler(
+KatogoriNo int not null identity(1,1) primary key,
+KatogoriAdi nvarchar(100)
+);
+
+use library;
+create table KITAP_KATOGORI(
+ISBN int foreign key (ısbn) REFERENCES Kitaplar(ısbn),
+KatogoriNo int foreign key (KatogoriNo) REFERENCES Katogoriler(KatogoriNo)
+);
+
+use library;
+create table KİTAP_YAZAR(
+ISBN int foreign key (ISBN) REFERENCES Kitaplar(ISBN),
+YazarNo int foreign key(YazarNo) references Yazarlar(YazarNo)
+);
+
+use library;
+create table KITAP_KUTUPHANE(
+Miktar int not null,
+KutuphaneNo int foreign key (KutuphaneNo) REFERENCES Kutuphane(KutuphaneNo),
+ISBN int foreign key (ısbn) references Kitaplar(ısbn)
+);
