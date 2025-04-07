@@ -56,7 +56,7 @@ create table Kategoriler(
  
  create table KitapKutuphane(
  ISBN int foreign key (ISBN) references kitaplar(ISBN),
- kutuphaneNO int foreign key(kutuphaneNO) references kutuphane(kutuphaneNO),
+ kutuphaneNO int foreign key(kutuphaneNO) references kutuphane_t(kutuphaneNO),
  );
  
  
