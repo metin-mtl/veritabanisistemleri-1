@@ -1,1 +1,0 @@
-# veritabanisistemleri-1
