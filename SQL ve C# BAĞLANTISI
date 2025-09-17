@@ -58,7 +58,34 @@ class Program
     }
 }
 
+create database MetinKutuphanesi;
+use MetinKutuphanesi
 
+create table kitaplar(
+kitapNumarasi int not null primary key,
+sayfaSayisi nvarchar (500),
+kitapAdi nvarchar (20),
+yayinTarihi nvarchar (10),
+);
+
+create table uyeler(
+uyeID int not null primary key,
+uyeAdi nvarchar (20),
+uyeSoyadi nvarchar (30),
+uyeTelefon nvarchar (10),
+uyeEposta nvarchar (100),
+);
+
+create table yazarlar(
+yazarAdi int not null primary key,
+yazarSoyadi nvarchar(50),
+);
+
+create table emanet(
+emanetNO int not null identity(1,1) Primary Key,
+emanetTarihi nvarchar(10),
+teslimTarihi nvarchar(10),
+);
 
 
 
