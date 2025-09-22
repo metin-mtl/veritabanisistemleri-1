@@ -1,0 +1,126 @@
+CREATE DATABASE ZED;
+USE ZED;
+
+CREATE TABLE users (
+    ID INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
+    userName NVARCHAR(40),
+    userSurname NVARCHAR(30),
+    userPassword NVARCHAR(50),
+    userEmail NVARCHAR(30),
+    userGender CHAR(5),
+    userBirthdate DATETIME,
+    userCreateDate DATETIME,
+    userTelNo1 CHAR(10),
+    userTelNo2 CHAR(10)
+);
+
+CREATE TABLE countries (
+    countriesID INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
+    country NVARCHAR(50)
+);
+
+CREATE TABLE cities (
+    citiesID INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
+    countryID INT,
+    town NVARCHAR(100),
+    FOREIGN KEY (countryID) REFERENCES countries(countriesID)
+);
+
+CREATE TABLE towns (
+    townsID INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
+    cityID INT,
+    town VARCHAR(100),
+    FOREIGN KEY (cityID) REFERENCES cities(citiesID)
+);
+
+CREATE TABLE districts (
+    districtID INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
+    townID INT,
+    district NVARCHAR(100),
+    FOREIGN KEY (townID) REFERENCES towns(townsID)
+);
+
+CREATE TABLE address_ (
+    address_ID INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
+    userID INT,
+    countryID INT,
+    cityID INT,
+    townID INT,
+    districtID INT,
+    postalCode NVARCHAR(100),
+    addressText NVARCHAR(100),
+    FOREIGN KEY (userID) REFERENCES users(ID),
+    FOREIGN KEY (countryID) REFERENCES countries(countriesID),
+    FOREIGN KEY (cityID) REFERENCES cities(citiesID),
+    FOREIGN KEY (townID) REFERENCES towns(townsID),
+    FOREIGN KEY (districtID) REFERENCES districts(districtID)
+);
+
+CREATE TABLE orders (
+    ID INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
+    userID INT,
+    ordersDate DATETIME,
+    ordersTotalPrice DECIMAL(10,2),
+    ordersStatus VARCHAR(30),
+    addressID INT,
+    FOREIGN KEY (userID) REFERENCES users(ID),
+    FOREIGN KEY (addressID) REFERENCES address_(address_ID)
+);
+
+CREATE TABLE items (
+    itemID INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
+    itemCode VARCHAR(50),
+    itemName VARCHAR(40),
+    itemUnitPrice DECIMAL(10,2),
+    itemCategory1 VARCHAR(50),
+    itemCategory2 VARCHAR(50),
+    itemCategory3 VARCHAR(50),
+    itemCategory4 VARCHAR(50),
+    itemBrand VARCHAR(100)
+);
+
+CREATE TABLE orderDetails (
+    ID INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
+    orderID INT,
+    itemID INT,
+    amount INT,
+    orderUnitPrice DECIMAL(10,2),
+    lineTotal DECIMAL(10,2),
+    FOREIGN KEY (orderID) REFERENCES orders(ID),
+    FOREIGN KEY (itemID) REFERENCES items(itemID)
+);
+
+CREATE TABLE invoices (
+    invoicesID INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
+    orderID INT,
+    invoicesDate DATETIME,
+    addressID INT,
+    cargoFisheNo INT,
+    invoicesTotalPrice DECIMAL(10,2),
+    FOREIGN KEY (orderID) REFERENCES orders(ID),
+    FOREIGN KEY (addressID) REFERENCES address_(address_ID)
+);
+
+CREATE TABLE invoiceDetails (
+    invoiceDetailsID INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
+    invoiceID INT,
+    orderDetailID INT,
+    itemID INT,
+    amount INT,
+    unitPrice DECIMAL(10,2),
+    lineTotal DECIMAL(10,2),
+    FOREIGN KEY (invoiceID) REFERENCES invoices(invoicesID),
+    FOREIGN KEY (orderDetailID) REFERENCES orderDetails(ID),
+    FOREIGN KEY (itemID) REFERENCES items(itemID)
+);
+
+CREATE TABLE payments (
+    PaymentID INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
+    orderID INT,
+    paymentType VARCHAR(50),
+    paymentDate DATETIME,
+    ISOCode VARCHAR(50),
+    approveCode VARCHAR(50),
+    PaymentTotal DECIMAL(10,2),
+    FOREIGN KEY (orderID) REFERENCES orders(ID)
+);
